@@ -32,7 +32,7 @@ function SectionOffersHomet({product}: Props) {
           <ButtonSectionHome name="All Products" funct={changeSection} dataName="Star Wars" style="rounded-l-lg"/> 
           <ButtonSectionHome name="Star Wars" funct={changeSection} dataName="Star Wars"/> 
           <ButtonSectionHome name="Consolas" funct={changeSection} dataName="Consolas"/> 
-          <ButtonSectionHome name="Games" funct={changeSection} dataName="Games" style="rounded-r-lg"/> 
+          <ButtonSectionHome name="Mesa" funct={changeSection} dataName="Mesa" style="rounded-r-lg"/> 
         </div>
 
         <div className="flex justify-center ">

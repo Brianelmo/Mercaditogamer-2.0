@@ -5,8 +5,8 @@ export const StarWarsFilter = (products: ProductsData[]) => {
 };
 
 export const JuegosMesaFilter = (products: ProductsData[]) => {
-  return products.filter((product) => product.section == "Mesa");
-};
+return products.filter((product) => product.section == "Mesa");
+}; 
 
 export const ConsolasFilter = (
   products: ProductsData[],
@@ -17,10 +17,12 @@ export const ConsolasFilter = (
 
 export const ProductFilter = (
   products: ProductsData[],
-  productSection: string | undefined
+    productSection: number
 ) => {
   return products.filter((product) => product.id == productSection);
-};
+}; 
+
+
 
 export const ProducRelatedFilter = (
   products: ProductsData[],

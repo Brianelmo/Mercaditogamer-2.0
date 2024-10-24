@@ -9,7 +9,8 @@ import NavBar from "../components/NavBar";
 function Products() {
   const { products } = useProducts();
 
-  const { id, section } = useParams();
+  const { id, section } = useParams(); 
+
 
   const productFilter = ProductFilter(products, id);
 

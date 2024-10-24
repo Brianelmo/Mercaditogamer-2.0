@@ -24,8 +24,9 @@ function ProductsService({ children }:childrenType) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("http://127.0.0.1:3000/products");
-        setProducts(response.data.products);
+        const response = await axios.get("http://127.0.0.1:8080/productos");
+        setProducts(response.data);
+        console.log(response.data);
       } catch (e) {
         console.log(e);
       }
@@ -33,7 +34,7 @@ function ProductsService({ children }:childrenType) {
 
     fetchProducts();
   }, []);
- 
+
 
   
 
@@ -42,7 +43,7 @@ function ProductsService({ children }:childrenType) {
       {children}
     </productContext.Provider>
   );
-};
+}
 
 const useProducts = () => {
   const product = useContext(productContext);
