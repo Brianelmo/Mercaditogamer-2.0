@@ -27,6 +27,7 @@ export const ProductFilter = (
 export const ProducRelatedFilter = (
   products: ProductsData[],
   productSection: string | undefined
+  ,productId: number | undefined
 ) => {
-  return products.filter((product) => product.section == productSection);
+  return products.filter((product) => product.section === productSection && product.id !== productId );
 };

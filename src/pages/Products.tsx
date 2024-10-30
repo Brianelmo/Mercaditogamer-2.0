@@ -11,10 +11,11 @@ function Products() {
 
   const { id, section } = useParams(); 
 
+  const numId = Number(id);
 
-  const productFilter = ProductFilter(products, id);
+  const productFilter = ProductFilter(products, numId);
 
-  const productRelated = ProducRelatedFilter(products, section);
+  const productRelated = ProducRelatedFilter(products, section, numId);
 
   return (
     <div>
