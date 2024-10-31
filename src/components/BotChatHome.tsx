@@ -9,16 +9,40 @@ function BotChatHome() {
   const [question, setQuestions] = useState<Questions[]>([]);
 
   const [options, setOptions] = useState<Options[]>([]);
+  const [showQuestions, setShowQuestion] = useState(true);
+  const [showButtonMenu, setShowButtonMenu] = useState(false);
+  const [asnwerText, setAnswerText] = useState("");
 
+
+  //Llamada a la api
   useEffect(() => {
     const timeOut = setTimeout(() => {
       setShowText(false);
-    }, 4000);
+    }, 4000); 
+
+    const fetchBot = async () => {
+      try {
+        const response = await axios.get("http://127.0.0.1:8080/bot/question");
+        const data = response.data;
+        const dataFilter = data.slice(0, 4);//dejando los primeros 4 resultados
+        setQuestions(dataFilter);//Almacenando la data en un estado
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      } 
+    } 
+
+    fetchBot();
 
     return () => clearTimeout(timeOut);
-  }); 
+  },[]);
 
-  
+  const ToggleMenuChat = () => {
+    setShowQuestion(true);
+    setOptions([]);
+    setShowButtonMenu(false);
+    setAnswerText("");
+  };
 
   const handleOptions = async (questionId: number) => {
     try {
@@ -26,10 +50,16 @@ function BotChatHome() {
         `http://127.0.0.1:8080/bot/${questionId}/options`
       );
       setOptions(response.data);
+      setShowQuestion(false);
+      setShowButtonMenu(true);
       console.log(response.data);
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const ShowAnswerText = (response: string) => {
+    setAnswerText(response);
   };
 
   const [showChat, setShowChat] = useState(false);
@@ -39,13 +69,7 @@ function BotChatHome() {
     setShowChat(!showChat);
     setShowImage(!showImage);
 
-    try {
-      const response = await axios.get("http://127.0.0.1:8080/bot/question");
-      setQuestions(response.data);
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    } 
+    
   };
 
   return (
@@ -86,24 +110,50 @@ function BotChatHome() {
             ></i>
           </header>
 
-          <div className="h-[400px] px-4 py-2 flex flex-col gap-4">
+          <div className="h-[400px] px-4 py-2 flex flex-col gap-4 w-[300px]">
             <div>
-              <span className="bg-[#ebf0f3] px-4 py-[0.3rem] rounded-md max-w-fit">
-                ¿En que puedo ayudarte?
-              </span>
+              {!showButtonMenu && (
+                <span className="bg-[#ebf0f3] px-4 py-[0.3rem] rounded-tl-md max-w-fit">
+                  ¿En que puedo ayudarte?
+                </span>
+              )}
               <div className="flex flex-col gap-2">
-                {question.map((question) => (
-                  <p
-                    key={question.id}
-                    onClick={() => handleOptions(question.id)}
-                    className="bg-[#ebf0f3] px-4 py-[0.4rem] rounded-md max-w-fit capitalize mt-4"
-                  >
-                    {question.question}
+                {showQuestions &&
+                  question.map((question) => (
+                    <p
+                      key={question.id}
+                      onClick={() => handleOptions(question.id)}
+                      className="bg-[#ebf0f3] px-4 py-[0.4rem] rounded-md max-w-fit capitalize mt-2"
+                    >
+                      {question.question}
+                    </p>
+                  ))}
+                {options &&
+                  options.map((option) => (
+                    <div>
+                      <p
+                        onClick={() => ShowAnswerText(option.answer_text)}
+                        className="bg-[#ebf0f3] px-4 py-[0.4rem] rounded-md max-w-fit mt-4"
+                      >
+                        {option.option_text}
+                      </p>
+                    </div>
+                  ))}
+
+                {asnwerText && (
+                  <p className="bg-[#ebf0f3] px-4 py-[0.4rem] rounded-md max-w-fit mt-4">
+                    {asnwerText}
                   </p>
-                ))}
-                {options.map((option) => (
-                  <p className="bg-[#ebf0f3] px-4 py-[0.4rem] rounded-md max-w-fit capitalize">{option.option_text}</p>
-                ))}
+                )}
+
+                {showButtonMenu && (
+                  <span
+                    className="bg-[#ebf0f3] px-4 py-[0.4rem] rounded-md max-w-fit capitalize mt-4"
+                    onClick={ToggleMenuChat}
+                  >
+                    Volver al menu
+                  </span>
+                )}
               </div>
             </div>
             <div className="w-full flex justify-end"></div>
