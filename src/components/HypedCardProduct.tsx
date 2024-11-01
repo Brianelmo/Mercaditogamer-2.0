@@ -1,19 +1,17 @@
-import { StarWarsFilter } from "../Hooks/ProductsFilter";
 import { ProductsData } from "../interfaces/Products";
 import { Link } from "react-router-dom";
+import { randomItem } from "../Utilities/RandomItems";
 
 interface Props {
   data: ProductsData[];
 }
 
 function HypedCardProduct({ data }: Props) {
-  const ItemsFilter = StarWarsFilter(data);
-
-  const hypedProduct = ItemsFilter.slice(0, 4);
+  const productsRandom = randomItem(data);
 
   return (
-    <div className="flex justify-center items-center flex-col gap-10">
-      {hypedProduct.map((product: ProductsData) => (
+    <div className="flex justify-center items-center flex-col gap-10 pt-4">
+      {productsRandom.map((product: ProductsData) => (
         <div
           className="w-10/12 max-w-[400px] flex flex-col justify-center items-center gap-6 bg-[#F7F8FA] shadow-md rounded-lg"
           key={product.id}
@@ -37,7 +35,12 @@ function HypedCardProduct({ data }: Props) {
                 {product.description}
               </span>
             </div>
-            <Link to={`/products/${product.section}/${product.title}/${product.id}`}  className="border-2 py-2 px-4 text-[#908d8d] text-sm w-1/2 border-[#908d8d] rounded-md flex justify-center items-center gap-2 hover:border-[#FF6E06] hover:text-[#FF6E06] transition-all cursor-pointer" >Comprar</Link>
+            <Link
+              to={`/products/${product.section}/${product.title}/${product.id}`}
+              className="border-2 py-2 px-4 text-[#908d8d] text-sm w-1/2 border-[#908d8d] rounded-md flex justify-center items-center gap-2 hover:border-[#FF6E06] hover:text-[#FF6E06] transition-all cursor-pointer"
+            >
+              Ver mas
+            </Link>
           </div>
         </div>
       ))}

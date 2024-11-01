@@ -18,7 +18,7 @@ interface childrenType {
 
 const productContext = createContext<DataProduct | undefined>(undefined);
 
-function ProductsService({ children }:childrenType) {
+function ProductsService({ children }: childrenType) {
   const [products, setProducts] = useState<ProductsData[]>([]);
 
   useEffect(() => {
@@ -26,7 +26,6 @@ function ProductsService({ children }:childrenType) {
       try {
         const response = await axios.get("http://127.0.0.1:8080/productos");
         setProducts(response.data);
-
       } catch (e) {
         console.log(e);
       }
@@ -34,9 +33,6 @@ function ProductsService({ children }:childrenType) {
 
     fetchProducts();
   }, []);
-
-
-  
 
   return (
     <productContext.Provider value={{ products }}>

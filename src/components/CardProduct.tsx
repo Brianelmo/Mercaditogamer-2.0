@@ -15,10 +15,10 @@ function CardProduct({ data }: ProductInterface) {
     <div>
       {/* <p className="text-sm font-semibold leading-loose px-2">{`home${productPath}`}</p> */}
       {data.map((item) => (
-        <div className="flex flex-col items-center mt-5" key={item.id}>
+        <div className="flex flex-col justify-center items-center mt-5" key={item.id}>
           
           {item.image ? (
-            <img className="w-full rounded-t-md" src={item.image} alt="" />
+            <img className="w-[500px] rounded-t-md" src={item.image} alt="" />
           ) : (
             "no hay imagen"
           )}

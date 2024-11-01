@@ -1,7 +1,7 @@
 import { ProductsData } from "../interfaces/Products.ts";
 import Button from "./Button.tsx";
 import { useState } from "react";
-import { ConsolasFilter } from "../Hooks/ProductsFilter.tsx";
+import {  ProductsFilter } from "../Hooks/ProductsFilter.tsx";
 
 interface dataProduct {
   product: ProductsData[];
@@ -11,7 +11,7 @@ interface dataProduct {
 function CardProductos({ product, nameSection }: dataProduct) { 
 
 
-  const producFilter = ConsolasFilter(product, nameSection) 
+  const producFilter = ProductsFilter(product, nameSection) 
 
   const producSlice = producFilter.slice(0 , 3)
  

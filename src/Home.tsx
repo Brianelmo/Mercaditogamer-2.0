@@ -44,9 +44,9 @@ function Home() {
           icon="fa-solid fa-headset"
           title="Soporte 24/7"
           text="A su disposicion"
-        /> 
+        />
 
-    <BotChatHome/>
+        <BotChatHome />
       </section>
 
       <section className="hyped-products mt-20 mb-20">
@@ -60,26 +60,26 @@ function Home() {
         <CarrouselHome/>
       </section>  */}
 
-      <h3 className="p-5 font-bold text-xl">All Categories</h3>
+      <h3 className="p-5 font-bold text-xl">Todas las categorias</h3>
       <section className="flex flex-col gap-10 justify-center items-center mb-10 mt-5">
         <AllCategoriesCard
           title="Consolas"
           list={["Juegos", "Consolas", "Controles", "Accesorios"]}
           img={PlayImage}
-          link="/consolas"
+          link={`/productos/${"Consolas"}`}
         />
         <AllCategoriesCard
           title="Figuras"
           list={["Plasticas", "Impresion 3D", "Originales", "Exclusivas"]}
           img={StarWarsImage}
-          link="/figuras"
+          link={`productos/${"Star Wars"}`}
         />
 
         <AllCategoriesCard
           title="Games"
           list={["Juegos", "Colecciones", "Cartas", "Para Familias"]}
           img={TableGame}
-          link="/games"
+          link={`productos/${"Mesa"}`}
         />
       </section>
 
@@ -102,10 +102,9 @@ function Home() {
             Suscribirse
           </button>
         </div>
-      </section> 
+      </section>
 
-        <Footer/>
-      
+      <Footer />
     </>
   );
 }

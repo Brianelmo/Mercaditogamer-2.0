@@ -4,30 +4,26 @@ export const StarWarsFilter = (products: ProductsData[]) => {
   return products.filter((product) => product.section == "Star Wars");
 };
 
-export const JuegosMesaFilter = (products: ProductsData[]) => {
-return products.filter((product) => product.section == "Mesa");
-}; 
-
-export const ConsolasFilter = (
+export const ProductsFilter = (
   products: ProductsData[],
-  productSection: string | null
+  section: string | undefined
 ) => {
-  return products.filter((product) => product.section == productSection);
+  return products.filter((product) => product.section == section);
 };
 
 export const ProductFilter = (
   products: ProductsData[],
-    productSection: number
+  productSection: number
 ) => {
   return products.filter((product) => product.id == productSection);
-}; 
-
-
+};
 
 export const ProducRelatedFilter = (
   products: ProductsData[],
-  productSection: string | undefined
-  ,productId: number | undefined
+  productSection: string | undefined,
+  productId: number | undefined
 ) => {
-  return products.filter((product) => product.section === productSection && product.id !== productId );
+  return products.filter(
+    (product) => product.section === productSection && product.id !== productId
+  );
 };

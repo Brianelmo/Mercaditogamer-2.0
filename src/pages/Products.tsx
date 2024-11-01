@@ -1,41 +1,26 @@
-import Footer from "../components/Footer";
-import { useParams } from "react-router-dom";
+import Nav from "../components/Nav";
 import { useProducts } from "../services/ProductsService";
-import { ProductFilter, ProducRelatedFilter } from "../Hooks/ProductsFilter";
-import CardProduct from "../components/CardProduct";
+import { useParams } from "react-router-dom";
+import { ProductsFilter } from "../Hooks/ProductsFilter";
 import HypedCardProduct from "../components/HypedCardProduct";
-import NavBar from "../components/NavBar";
 
-function Products() {
+function Consolas() {
   const { products } = useProducts();
+  const { section } = useParams();
 
-  const { id, section } = useParams(); 
-
-  const numId = Number(id);
-
-  const productFilter = ProductFilter(products, numId);
-
-  const productRelated = ProducRelatedFilter(products, section, numId);
+  const productFilter = ProductsFilter(products, section);
 
   return (
     <div>
-      <nav>
-        <NavBar/>
-      </nav>
-      <section className="my-10">
-        <CardProduct data={productFilter} />
-      </section>
+      <Nav PropFunc={() => ({})} />
 
-      <section className="flex flex-col justify-center gap-10">
-        <h2 className="px-4 text-xl font-bold">Related Products</h2>
-        <div className="flex flex-col gap-4">
-          <HypedCardProduct data={productRelated} />
-        </div>
-      </section>
+      <h2>{`Todos los productos de ${section}`}</h2>
 
-      <Footer />
+      <section>
+        <HypedCardProduct data={productFilter} />
+      </section>
     </div>
   );
 }
 
-export default Products;
+export default Consolas;
