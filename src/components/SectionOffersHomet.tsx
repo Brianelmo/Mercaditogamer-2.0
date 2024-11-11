@@ -8,7 +8,7 @@ interface Props {
 }
 
 function SectionOffersHomet({ product }: Props) {
-  const [sectionProduct, setSectionProduct] = useState<string | null>(
+  const [sectionProduct, setSectionProduct] = useState<string | undefined>(
     "Star Wars"
   );
 
@@ -22,10 +22,11 @@ function SectionOffersHomet({ product }: Props) {
 
   return (
     <div>
-      <section className="p-5">
+      <section className="">
+        <div className="flex mt-2 items-center justify-center w-fit flex-col">
         <h2 className="text-xl font-bold">Nuestros Productos</h2>
-        <div className="flex mt-2 items-center justify-center w-fit">
-          <ButtonSectionHome
+         <div className="flex pl-6">
+         <ButtonSectionHome
             name="Star Wars"
             funct={changeSection}
             dataName="Star Wars"
@@ -42,9 +43,10 @@ function SectionOffersHomet({ product }: Props) {
             dataName="Mesa"
             style="rounded-r-lg"
           />
+         </div>
         </div>
 
-        <div className="flex justify-center ">
+        <div className="flex justify-center w-full">
           <CardProductos product={product} nameSection={sectionProduct} />
         </div>
       </section>

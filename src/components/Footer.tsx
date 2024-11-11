@@ -3,7 +3,7 @@ import LinksFooter from './LinksFooter'
 function Footer() {
   return (
     <div>
-       <footer className="flex flex-col gap-20 mt-20 mb-10">
+       <footer className="flex flex-col gap-20 mt-20 mb-10 md:flex-row ">
         <div className="px-4 flex flex-col gap-4 justify-center items-center text-center">
           <h3 className="text-2xl font-bold">
             Mercadito <span className="text-[#FF6E06]">Gamer</span>
@@ -19,7 +19,7 @@ function Footer() {
           </div>
         </div>
 
-        <div className="flex flex-col items-center justify-center gap-10">
+        <div className="flex flex-col items-center justify-center gap-10 md:flex-row md:gap-5">
           <LinksFooter
             title="Customer"
             list={[

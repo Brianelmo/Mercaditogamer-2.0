@@ -24,7 +24,8 @@ function Home() {
           <Hero />
         </div>
       </header>
-      <section className="services flex flex-col justify-center items-center mt-10 gap-10">
+      <main className="max-w-[1600px] m-auto overflow-hidden">
+      <section className="services flex flex-col justify-center items-center mt-10 gap-10 md:flex-row md:px-10 md:mt-20">
         <CardServices
           icon="fa-solid fa-truck-fast"
           title="Envio Gratis"
@@ -46,14 +47,18 @@ function Home() {
           text="A su disposicion"
         />
 
-        <BotChatHome />
+        
       </section>
+      <BotChatHome />
 
-      <section className="hyped-products mt-20 mb-20">
+      <section className="hyped-products mt-40 mb-20 md:p-5">
+        <h3 className="p-5 font-bold text-xl">Algunos productos</h3>
         <HypedCardProduct data={products} />
       </section>
 
+      <section className="flex justify-center md:p-5">
       <SectionOffersHomet product={products} />
+      </section>
 
       {/* <section className="w-full mb-10 mt-10">
         <h3 className="p-2 font-bold text-xl mb-5">Combos imperdibles</h3>
@@ -61,7 +66,7 @@ function Home() {
       </section>  */}
 
       <h3 className="p-5 font-bold text-xl">Todas las categorias</h3>
-      <section className="flex flex-col gap-10 justify-center items-center mb-10 mt-5">
+      <section className="flex flex-col gap-10 justify-center items-center mb-10 mt-5 flex-wrap md:flex-row md:gap-40 md:mt-20 md:mb-20">
         <AllCategoriesCard
           title="Consolas"
           list={["Juegos", "Consolas", "Controles", "Accesorios"]}
@@ -83,7 +88,8 @@ function Home() {
         />
       </section>
 
-      <section className="bg-gray-200 px-2 py-10 flex flex-col gap-6 justify-center items-center ">
+      </main>
+      <section className="bg-gray-200 px-2 py-10 flex flex-col gap-6 justify-center items-center md:flex-row md:items-center md:gap-20">
         <div></div>
         <div>
           <h3 className="font-bold text-2xl">NewSletter</h3>

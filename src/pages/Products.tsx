@@ -1,8 +1,9 @@
-import Nav from "../components/Nav";
 import { useProducts } from "../services/ProductsService";
 import { useParams } from "react-router-dom";
 import { ProductsFilter } from "../Hooks/ProductsFilter";
 import HypedCardProduct from "../components/HypedCardProduct";
+import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
 
 function Consolas() {
   const { products } = useProducts();
@@ -12,13 +13,14 @@ function Consolas() {
 
   return (
     <div>
-      <Nav PropFunc={() => ({})} />
-
-      <h2>{`Todos los productos de ${section}`}</h2>
+      <NavBar />
+      <h2 className="p-5 text-xl">{`Todos los productos de ${section}`}</h2>
 
       <section>
         <HypedCardProduct data={productFilter} />
       </section>
+
+      <Footer />
     </div>
   );
 }

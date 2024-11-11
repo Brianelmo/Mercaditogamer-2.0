@@ -8,21 +8,18 @@ interface Props {
 
 function HypedCardProduct({ data }: Props) {
   const productsRandom = randomItem(data);
-
   return (
-    <div className="flex justify-center items-center flex-col gap-10 pt-4">
+    <div className="flex justify-center items-center flex-col gap-10 pt-4 md:flex-row md:flex-wrap">
       {productsRandom.map((product: ProductsData) => (
         <div
-          className="w-10/12 max-w-[400px] flex flex-col justify-center items-center gap-6 bg-[#F7F8FA] shadow-md rounded-lg"
+          className="w-10/12 max-w-[360px] h-[35rem] flex flex-col justify-center items-center gap-6 bg-[#F7F8FA] shadow-md rounded-lg"
           key={product.id}
         >
-          <div className="flex justify-center">
+          <div className="flex justify-center w-full max-w-[360px] md:w-[400px] h-[70%]">
             {product.image ? (
-              <img
-                className="w-full h-auto rounded-t-lg"
-                src={product.image}
-                alt=""
-              />
+              <div className={`bg-cover bg-center w-full h-full rounded-t-lg`} style={{backgroundImage: `url(${product.image})`}}>
+                
+              </div>
             ) : (
               "no hay imagen"
             )}
