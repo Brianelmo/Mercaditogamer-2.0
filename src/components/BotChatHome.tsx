@@ -32,9 +32,10 @@ function BotChatHome() {
   const handleOptions = async (questionId: number) => {
     try {
       const response = await axios.get(
-        `http://127.0.0.1:8080/bot/${questionId}/options`
+        `http://127.0.0.1:8080/bot/options/${questionId}`
       );
       setOptions(response.data);
+      console.log('buscando opciones')
       setShowQuestion(false);
       setShowButtonMenu(true);
       console.log(response.data);
@@ -100,7 +101,7 @@ function BotChatHome() {
                   ¿En que puedo ayudarte?
                 </span>
               )}
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-2 mt-2">
                 {showQuestions &&
                   questions.map((question) => (
                     <p
@@ -108,7 +109,7 @@ function BotChatHome() {
                       onClick={() => handleOptions(question.id)}
                       className="bg-[#ebf0f3] px-4 py-[0.4rem] rounded-md max-w-fit capitalize mt-2 cursor-pointer"
                     >
-                      {question.question}
+                      {question.question_text}
                     </p>
                   ))}
                 {options &&
@@ -131,7 +132,7 @@ function BotChatHome() {
 
                 {showButtonMenu && (
                   <span
-                    className="bg-[#ebf0f3] px-4 py-[0.4rem] rounded-md max-w-fit capitalize mt-4"
+                    className="bg-[#ebf0f3] px-4 py-[0.4rem] cursor-pointer rounded-md max-w-fit capitalize mt-4"
                     onClick={ToggleMenuChat}
                   >
                     Volver al menu
