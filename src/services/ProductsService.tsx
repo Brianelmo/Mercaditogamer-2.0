@@ -24,7 +24,7 @@ function ProductsService({ children }: childrenType) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get("https://mercaditibackend-production.up.railway.app/prodcuts")
+        const response = await axios.get("https://mercaditibackend-production.up.railway.app/products")
         setProducts(response.data);
       } catch (e) {
         console.log(e);
