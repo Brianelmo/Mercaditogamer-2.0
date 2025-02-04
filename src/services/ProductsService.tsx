@@ -27,7 +27,7 @@ function ProductsService({ children }: childrenType) {
         const response = await axios.get("https://mercaditibackend-production.up.railway.app/products")
         setProducts(response.data);
       } catch (e) {
-        console.log(e);
+        console.log(e + 'error al traer los productos');
       }
     };
 

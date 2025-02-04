@@ -25,7 +25,7 @@ function QuestionServices({children}:childrenType){
                 console.log(response.data)
                 
             } catch (error) {
-                console.log(error);
+                console.log(error + 'error al traer las preguntas');
             }
         }
         fetchQuestions();
