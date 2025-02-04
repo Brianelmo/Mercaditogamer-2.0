@@ -20,12 +20,12 @@ function QuestionServices({children}:childrenType){
     useEffect(() => {
         const fetchQuestions = async () => {
             try {
-                const response = await axios.get("http://127.0.0.1:8080/bot/question")
+                const response = await axios.get("https://mercaditibackend-production-0924.up.railway.app/bot/question")
                 setQuestion(response.data);
                 console.log(response.data)
                 
             } catch (error) {
-                console.log(error);
+                console.log(error + 'error al traer las preguntas');
             }
         }
         fetchQuestions();
